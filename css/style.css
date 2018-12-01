@@ -1,0 +1,924 @@
+/*
+orange:#e67e22;
+*/
+
+
+
+/*-------------------------------------------------------*/
+/* BASIC SETUP */
+/*-------------------------------------------------------*/
+
+*{
+   margin:0; /*minden elem marginja*/
+   padding:0; /*minden elem paddingja*/
+   box-sizing:border-box; /* az egész szélessége magassága akkokra lesz amekkora az érték nem számít hogy van e padding vagy border-width*/
+ }
+
+html,
+body{
+   background-color: #fff; /*alapháttérszín*/
+   color:#555; /*szövegek alapszíne*/
+   font-family:'Lato','Arial','sans-serif'; /*Ha nincs internet kapcsolat akkor a második töltődik be a honlapra*/
+   font-size:20px; /*alap betűméret minden elem gyökere*/
+   font-weight: 300; /*alap betű vastagság*/
+   text-rendering: optimizeLegibility; /*olvashatóság előtérbe helyezése*/
+   line-height:1.25; /*sorköz alap értéke*/
+   overflow-x: hidden; /*túlcsordulás elrejtése*/
+}
+
+
+.clearfix:after {
+   content: '.'; /* tartalommal töltjük fel a következő sort*/
+   visibility: hidden; /*elrejtem*/
+   clear: both; /*nem lehet jobbról, balról floatolt elem*/
+   display: block; /*block szintű megjelenítés az elemnek tehát lényegében új sorba helyezi*/
+   height: 0; /*magasság*/
+}
+
+
+
+
+
+
+
+
+
+/*-------------------------------------------------------*/
+/* REUSABLE COMPONENT*/
+/*-------------------------------------------------------*/
+
+.row{
+   max-width:1140px; /*maximum szélesség a row class-ban rögzített elemeknek*/
+   margin:0 auto; /*alsó, felső margó nulla, bal, jobb oldali auto*/
+}
+section{
+   padding:80px 0; /*a section-ok belső padding-ja 80 px felül, alul, nulla bal, jobb oldalt*/
+}
+.box{
+   padding:1%; /*1% padding a box class-nak*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------------------------------------------*/
+/* HEADINGS */
+/*-------------------------------------------------------*/
+
+
+h1,h2,h3 {
+   /*a h1 alapból 200%-os értékkel rendelkezik*/
+   font-weight:300;  /*betű vastagság*/
+   text-transform:uppercase; /*nagybetűssé alakítás*/
+}
+h1{
+   margin-top:0; /*felső margó értéke*/
+   margin-bottom:20px;/*alsó margó 20 px*/
+   color:#fff;/*fehér szín*/
+   font-size:210%;/*betű méret az alap 20 px-hez viszonyítva*/
+   word-spacing:4px;/*szavak közötti közök*/
+   letter-spacing:1px;/*betűk közötti közök*/
+}
+h2{ 
+   font-size:150%; /*h2 betűmérete az alap 20 px-hez viszonyítva*/
+   word-spacing:2px; /*szavak közötti közök*/
+   letter-spacing:1px;/*betű közök*/
+   text-align:center;/*szöveg behúzása középre*/
+   margin-bottom:30px;/*alsó margó*/
+}
+h2:after{ /*a h2 után közvetlenül lévő virtuális elem*/
+   display:block; /*blokk szintű elem, tehát lényegében új sorban jelenik meg*/
+   height:3px; /*magasság*/
+   background-color: #e67e22;/*háttérszín*/
+   content:" ";/*üres tartalmú kontent*/
+   width:100px; /*szélesség */
+   margin: 0 auto;/*margó felül alul 0 jobb, bal auto tehát középen*/
+   margin-top:30px;/*felső margó külön beállított értéke*/
+}
+
+h3{
+   font-size:110%;/*betűméret a 20px-el képest*/
+   margin-bottom:15px;/*alsó margó mérete*/
+}
+
+
+
+
+
+
+
+
+
+
+/*----------------PARAGRAPH---------------*/
+
+.long-copy{
+   line-height:145%;/*sorköz mérete az 1.25-ös értékhez viszonyítva*/
+   width:70%;/*szélesség a row 80%-os értékéhez képest*/
+   margin-left:15%;/*bal margó 15%, így a jobb margó is ugyanennyi lesz, mert 70 % széles az egész div*/
+}
+.box p{
+   font-size:90%;/*betűméret az egészhez viszonítva*/
+   line-height:140%;/*sorköz nagysága az 1.25-höz viszonyítva*/
+}
+
+
+
+
+
+
+
+
+
+
+/*-------------------------------------------------------*/
+/* HEADER*/
+/*-------------------------------------------------------*/
+
+
+header{
+   background-image:/*linear-gradient(to right, rgba(255,0,0,0.09), rgba(255,100,100,0.2)),*/url(http://szemelyes.000webhostapp.com/omnifood/img/hero-min.jpg);/*vízszintes színátmenet melyik irányba végződön*/
+   
+   background-size:cover; /*Kép nyújtása teljes nézetre*/
+   background-position:center;/*kép elhelyezkedése középen*/
+   background-attachment:fixed;/*a kép rögzítése a háttérhez!*/
+   height:100vh; /*100% height a viewport értékében; viewport:the browser window size */
+}
+.hero-text-box{
+   position:absolute;/*gombokat és a szöveget tartalmazó blokk a kép előtt; abszolút pozíció*/
+   width:1100px;/*az adott block szélessége px-ben*/
+   top:35%;/*pozíció felülről %-ban*/
+   left:13%;/*pozíció balról %-ban*/
+   -webkit-transform:translate(-1%, -1%);
+           transform:translate(-1%, -1%);/*elem eltolása 1% ban  */
+}
+.logo{
+   height:100px; /*logo magassága px-ben*/
+   width:auto;/*automata szélesség*/
+   float:left;/*balra húzás*/
+   margin-top:20px;/*felső margó 20px*/
+}
+.logo-black{
+   height:50px;/*waypoint-os menüben lévő fekete logo magassága*/
+   width:auto;/*waypoint-os menüben lévő fekete logo szélessége*/
+   float:left;/*waypoint-os menüben lévő fekete logo balra igazítása*/
+   margin:5px 0;/*waypoint-os menüben lévő fekete logo felső margó 5 px bal,jobb nulla*/
+   display:none;/*waypoint-os menüben lévő fekete logo sima nézetben nem látható*/
+}
+
+
+/* ------------------------- MAIN NAVI ----------------------------------*/
+
+
+.main-nav{
+   float:right;/*jobbra húzás a logo-hoz képest*/
+   /*lista stílus ne legyen*/
+   margin-top:55px;/*felső margó*/
+}
+.main-nav li{
+   text-decoration:none;/*margó*/
+   display:inline-block;/*margó*/
+   margin-left:40px;/*margó*/
+}
+
+.main-nav {
+   list-style-type:circle;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited{
+   padding: 8px 0;/*margó*/
+   text-decoration:none;/*margó*/
+   color:#fff;/*margó*/
+   text-transform:uppercase;/*margó*/
+   font-size:90%;/*margó*/
+   border-bottom:2px solid transparent;/*margó*/
+   transition:border-bottom 0.5s;/*margó*/
+}
+.main-nav li a:hover,
+.main-nav li a:active{
+   border-bottom:2px solid #e67e22; /*margó*/
+}
+
+/* ------------------------- MOBILE NAVI ----------------------------------*/
+
+.mobile-nav-icon{
+   float:right;/*margó*/
+   margin-top:30px;/*margó*/
+   cursor:pointer;/*margó*/
+   display:none;/*margó*/
+}
+.mobile-nav-icon i{
+   font-size:200%;/*margó*/
+   color:#fff;/*margó*/
+}
+
+/* ------------------------- STICKY NAVI ----------------------------------*/
+
+.sticky{
+   position:fixed;/*margó*/
+   top:0;/*margó*/
+   left:0;/*margó*/
+   width:100%;/*margó*/
+   background-color: rgba(255,255,255,0.98);/*margó*/
+   box-shadow: 0 2px 2px #efefef;/*margó*/
+   z-index:9999;/*margó*/
+}
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited{
+   padding: 15px 0;
+   color:#555;
+}
+.sticky .main-nav{margin-top:18px;}
+
+.sticky .logo{display:none;}
+.sticky .logo-black{display:block;}
+
+
+
+/*--------------- FEATURES ---------------*/
+
+.section-feature .long-copy{
+   margin-bottom:30px;
+}
+
+
+
+
+
+
+
+
+
+
+/*--------------- MEALS ---------------*/
+
+.section-meals{
+   padding:0;
+}
+
+.meals-showcase{
+   list-style:none;
+   width:100%;
+}
+
+.meals-showcase li{
+   display:block;
+   float:left; /*balra zárás*/
+   width:25%;
+    
+}
+
+.meal-photo{
+   width:100%;
+   margin:0;
+   overflow:hidden; /*a túlcsordulás elrejtése*/
+   background-color:#000; /* fekete háttér a div-nek mögötte a kép*/
+}
+.meal-photo img{
+   width:100%;
+   height:auto;
+   -webkit-transform: scale(1.15);
+           transform: scale(1.15); /* nagyítási arány megnövelése*/
+   transition:opacity 0.5s, -webkit-transform 0.5s;
+   transition:transform 0.5s, opacity 0.5s;
+   transition:transform 0.5s, opacity 0.5s, -webkit-transform 0.5s; /* animáció a hover és az alap érték között 1.05 és 1.15  közt */
+   opacity:0.7;
+   
+}
+.meal-photo img:hover{
+   opacity:1; /*átlátszóság*/
+   -webkit-transform:scale(1.05);
+           transform:scale(1.05);
+}
+
+
+
+
+
+
+
+
+
+
+
+/*--------------- WORKS ---------------*/
+
+.steps-box {
+   margin-top:30px;
+}
+.steps-box:first-child{
+   text-align:right;
+   padding-right:3%;
+}
+.steps-box:last-child{
+   text-align:left;
+   padding-left:3%;
+   margin-top:70px;
+}
+
+.app-screen{
+   width:40%;
+}
+.works-step{
+   margin-bottom:30px;
+}
+
+.works-step div{
+   color:#e67e22;
+   border:2px solid #e67e22;
+   display:inline-block;
+   border-radius:50%;
+   height:50px;
+   width:50px;
+   text-align:center;
+   padding:5px;
+   float:left;
+   font-size:150%;
+   margin-right:25px;
+}
+.section-steps{
+   background-color:#f4f4f4;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*---------------- SECTION TOWN ------------------*/
+
+
+.section-town .app-screen{
+   width:100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*---------------- SECTION TESTIMONIALS ------------------*/
+
+.section-testimonials{
+   background-image:linear-gradient( rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url(http://szemelyes.000webhostapp.com/omnifood/img/back-customers.jpg);
+   background-size:cover;
+   color:#fff;
+   background-attachment:fixed;
+}
+
+blockquote{
+   padding:2%;
+   font-style:italic;
+   line-height:145%;
+   position:relative;
+   margin-top:40px;
+}
+
+cite{
+   font-size:90%;
+   margin-top:25px;
+   display:block;
+   
+}
+blockquote:before{
+   content:"\201C";
+   font-size:500%;
+   display:block;
+   position:absolute;
+   top: -5px;
+   left:-3px;
+}
+
+cite img{
+   height:45px;
+   border-radius:50%;
+   margin-right:10px;
+   vertical-align:middle;
+}
+
+
+
+
+
+
+
+
+
+/*---------------- SECTION SIGN UP ------------------*/
+
+
+
+.section-plans{
+   background-color:#f4f4f4;
+}
+.plan-box{
+   background-color:#fff;
+   border-radius:5px;
+   width:90%;
+   margin-left:5%;
+   box-shadow:0 2px 2px #efefef;
+}
+.plan-box div{
+   padding:15px;
+   border-bottom:1px solid #e8e8e8;
+}
+.plan-price{
+   font-size:300%;
+   margin-bottom:10px;
+   font-weight:100;
+   color:#e67e22;
+}
+.plan-price span{
+   font-size:30%;
+   font-weight:300;
+}
+
+.plan-price-meal{
+   font-size:80%;
+}
+.plan-box ul{
+   list-style:none;
+}
+.plan-box ul li{
+   padding:5px 0;
+   
+}
+.plan-box div:first-child{
+   background-color:#fcfcfc;
+   border-top-left-radius:5px;
+   border-top-right-radius:5px;
+}
+.plan-box div:last-child{
+   text-align:center;
+   border:0;
+}
+
+
+
+
+/*--------------- FORM ---------------*/
+
+
+
+
+
+#map{
+   width:100%; /*térkép div szélesége*/
+   height:560px;
+   z-index:0;
+}
+
+.map-box{
+   position:relative;
+   width:100%; /*térkép div szélesége*/
+   height:560px; /*magasság pixelben*/
+}
+.form-box{
+   position:absolute;
+   width:50%;
+   height:560px;
+   top:0;
+   right:0;
+   background-color:rgba(255,255,255,0.7);
+   z-index:10;
+   padding-top:40px;
+}
+
+
+
+
+/*--------------- FORM ---------------*/
+
+
+
+.contact-form{
+   width:90%;
+   margin:0 auto;
+}
+
+input[type=text],
+input[type=email],
+select,
+textarea{
+   width:100%;
+   padding:7px;
+   border-radius:3px;
+   border: 1px solid #ccc;
+}
+
+textarea{
+   height:100px;
+}
+
+input[type=checkbox]{
+   margin:10px 5px 10px 0;
+   -webkit-transform: scale(1.5);
+           transform: scale(1.5);
+}
+
+*:focus{
+   outline:none;
+}
+
+
+
+
+
+/*--------------- ICONS ---------------*/
+
+
+
+
+
+
+
+.icon-big{
+   display:block; /* blokk szintű elem új sorban*/
+   color:#e67e22;
+   margin-bottom:10px;
+   font-size: 300%; /* materialt nem lehet width és height értékkel megnagyítani: https://stackoverflow.com/questions/14482249/setting-size-for-icon-in-css*/
+}
+
+.icon-small{
+   display:inline-block;
+   width:30px;
+   text-align:center;
+   color:#e67e22;
+   font-size:120%;
+   margin-right:20px;
+   line-height:120%;
+   vertical-align:middle;
+   margin-top:-5px;
+}
+
+.icontown i{
+   margin:0;
+}
+
+
+.icontown div{
+   font-size:80%;
+   float:left;
+   margin:0 5%;
+   width:10%;
+}
+.icontown img{
+   margin-bottom:7%;
+}
+.icontown h3:after{
+   display:none;
+}
+.icontown h3{
+   margin-left:2%;
+   text-align:left;
+}
+.icontown p{
+   vertical-align:20%;
+   
+}
+.icontown a{
+   color:#e67e22;
+}
+
+
+
+
+
+
+/*--------------- LINKS ---------------*/
+
+
+
+
+
+
+a:link,
+a:visited{
+   color:#e67e22;
+   text-decoration:none;
+   padding-bottom:1px;
+   border-bottom: 1px solid #e67e22;
+   transition: border-bottom 0.2s, color 0.2s;
+}
+a:hover,
+a:active{
+   color:#555;
+   border-bottom:1px solid transparent;
+}
+
+
+
+
+
+/*--------------- BUTTONS ---------------*/
+
+
+
+
+
+
+.btn:link,
+.btn:visited,
+input[type=submit]{
+   display:inline-block;
+   padding:10px 30px;
+   font-weight:300;
+   text-decoration:none; /* link, aláhúzás eltávolítása*/
+   border-radius:200px;
+   transition:background-color 0.5s, color 0.5s, border 0.5s; /*gomb szín háttérszín határ megjelenítése átmenettel 0.5 s alatt*/
+   
+}
+.btn-full:link,
+.btn-full:visited,
+input[type=submit]{
+   background-color:#e67e22;
+   border:1px solid #e67e22;
+   color:#fff;
+   margin-right:15px;
+}
+.btn-ghost:link,
+.btn-ghost:visited{
+   border:1px solid #e67e22;
+   color:#e67e22;
+}
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active{
+   background-color:#cf6d17;
+}
+.btn-full:hover,
+.btn-full:active{
+   background-color:#cf6d17;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active{
+   border: 1px solid #cf6d17;
+   color:#fff;
+}
+
+
+
+
+
+
+/*--------------- FOOTER ---------------*/
+
+
+
+
+
+
+footer{
+   background-color:#333;
+   padding:40px;
+   font-size:80%;
+}
+
+.footer-nav{
+   list-style:none;
+   float:left;
+}
+
+.social-links{
+   list-style:none;
+   float:right; 
+}
+
+.footer-nav li,
+.social-links li{
+   display:inline-block;
+   margin-right:20px;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child{
+   margin-right:0;
+}
+ 
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited{
+   text-decoration:none;
+   border:0;
+   color:#888; 
+   transition:color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active{
+   color:#ddd;
+}
+
+footer p{
+   color:#888;
+   text-align:center;
+   margin-top:20px;
+}
+
+.social-links li a:link,
+.social-links li a:visited{
+   font-size:160%;
+}
+
+.ion-social-facebook,
+.ion-social-twitter,
+.ion-social-googleplus,
+.ion-social-instagram{
+   transition:color 0.2s;
+}
+
+.ion-social-facebook:hover{
+   color:#3b5998;
+}
+.ion-social-twitter:hover{
+   color:#55acee;
+}
+.ion-social-googleplus:hover{
+   color:#dd4b39;
+}
+.ion-social-instagram:hover{
+   color:#FCCC63;
+}
+
+
+
+
+
+
+
+/*-------------------------------------------------------*/
+/* ANIMATIONS */
+/*-------------------------------------------------------*/
+
+.js--wp-1,
+.js--wp-2,
+.js--wp-3{
+   opacity:0;
+   -webkit-animation-duration:1s;
+}
+.js--wp-4{
+   -webkit-animation-duration:1s;
+}
+.js--wp-1.animated,
+.js--wp-2.animated,
+.js--wp-3.animated{
+   opacity:1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*--------------- MEDIA QUERIES ---------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width:1200px){
+   .hero-text-box{
+      width:100%;
+      padding:0 2%;
+   }
+   .row{padding: 0 2%;}
+}
+
+@media only screen and (max-width:1023px){
+   body{font-size:16px;}
+   section{padding:60px 0;}
+   .long-copy{
+      width:80%;
+      margin-left:10%;
+   }
+   .steps-box{ margin-top:10px;}
+   .steps-box:last-child{ margin-top:10px;}
+   .works-step{margin-bottom:40px}
+   .works-step:last-of-type{margin-bottom:60px}
+   .app-screen{width:50%;}
+   .iocn-small{width:17px;}
+   .icontown div{
+      font-size:70%;
+      margin-right:10%;
+   }
+   .plan-box{
+      width:100%;
+      margin-left:0%;
+   }
+   .plan-price{font-size:250%;}
+   .contact-form{width:90%;}
+}
+@media only screen and (max-width:767px){
+   body{font-size:16px;}
+   section{padding:30px 0;}
+   .row,
+   .hero-text-box{padding:0 4%;}
+   .col{
+      width:100%;
+      margin:0 0 4% 0%;
+   }
+   /*.main-nav{display:none;}*/
+   
+   .mobile-nav-icon{
+      display:inline-block;
+   }
+   .main-nav{
+      float:left;
+      margin-top:35px;
+      margin-left:25px;
+   }
+   .main-nav li{
+      display:block;
+   }
+   .main-nav li a:link,
+   .main-nav li a:visited{
+      display:block;
+      border:0; /*mobil nézeten nincs hover*/
+      padding:10px 0;
+      font-size:100%;
+   }
+   
+   
+/*lentebbi menü margója, paddingje, illetve az ikon szine más*/
+.sticky .main-nav{margin-top:10px;}
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited{
+   padding: 10px 0;
+}
+.sticky .mobile-nav-icon i{color:#555;}
+.sticky .mobile-nav-icon {margin-top:10px;}   
+   
+   
+   h1{font-size:180%;}
+   h2{font-size:150%;}
+   .long-copy{
+      width:100%;
+      margin-left:0%;
+   }
+   .works-step{margin-bottom:20px}
+   .works-step:last-of-type{margin-bottom:20px}
+   .works-step div{
+      
+      height:40px;
+      width:40px;
+      padding:4px;
+      margin-right:15px;
+      font-size:120%;
+   }
+   .steps-box:first-child{ 
+      text-align:center;
+   }
+   .app-screen{width:40%;}
+   
+}
+
+@media only screen and (max-width:480px){
+   section{padding: 25px 0}
+   .contact-form{width:100%;
+   }
+}
+
