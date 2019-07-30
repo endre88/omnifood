@@ -51,6 +51,7 @@ body{
    max-width:1140px; /*maximum szélesség a row class-ban rögzített elemeknek*/
    margin:0 auto; /*alsó, felső margó nulla, bal, jobb oldali auto*/
 }
+
 section{
    padding:80px 0; /*a section-ok belső padding-ja 80 px felül, alul, nulla bal, jobb oldalt*/
 }
@@ -157,35 +158,40 @@ header{
    width:1100px;/*az adott block szélessége px-ben*/
    top:35%;/*pozíció felülről %-ban*/
    left:13%;/*pozíció balról %-ban*/
-   -webkit-transform:translate(-1%, -1%);
-           transform:translate(-1%, -1%);/*elem eltolása 1% ban  */
+   transform:translate(-1%, -1%);/*elem eltolása 1% ban  */
 }
+
+/*-----------------------------------------------------------------------------*/
+/*Két logó megjelenése*/
 .logo{
    height:100px; /*logo magassága px-ben*/
    width:auto;/*automata szélesség*/
    float:left;/*balra húzás*/
    margin-top:20px;/*felső margó 20px*/
 }
-.logo-black{
+.logo-black{ /*ez a logo a görgetés után jelenik meg*/
    height:50px;/*waypoint-os menüben lévő fekete logo magassága*/
    width:auto;/*waypoint-os menüben lévő fekete logo szélessége*/
    float:left;/*waypoint-os menüben lévő fekete logo balra igazítása*/
    margin:5px 0;/*waypoint-os menüben lévő fekete logo felső margó 5 px bal,jobb nulla*/
    display:none;/*waypoint-os menüben lévő fekete logo sima nézetben nem látható*/
 }
+/*------------------------------------------------------------------------------*/
+
+
 
 
 /* ------------------------- MAIN NAVI ----------------------------------*/
 
 
 .main-nav{
-   float:right;/*jobbra húzás a logo-hoz képest*/
+   float:right;/*jobbra húzás a logo- img-khez képest*/
    /*lista stílus ne legyen*/
    margin-top:55px;/*felső margó*/
 }
 .main-nav li{
-   text-decoration:none;/*margó*/
-   display:inline-block;/*margó*/
+   text-decoration:none;/*a felsorolás elemeknek ne legyen szöveg dekorációja*/
+    display:inline-block;/*elavult lehet: egysoros blokk elemként mutassa a felsorolást*/ 
    margin-left:40px;/*margó*/
 }
 
@@ -235,7 +241,7 @@ header{
 
 .sticky .main-nav li a:link,
 .sticky .main-nav li a:visited{
-   padding: 15px 0;
+   padding: 15px 10px;
    color:#555;
 }
 .sticky .main-nav{margin-top:18px;}
@@ -287,18 +293,14 @@ header{
 .meal-photo img{
    width:100%;
    height:auto;
-   -webkit-transform: scale(1.15);
-           transform: scale(1.15); /* nagyítási arány megnövelése*/
-   transition:opacity 0.5s, -webkit-transform 0.5s;
-   transition:transform 0.5s, opacity 0.5s;
-   transition:transform 0.5s, opacity 0.5s, -webkit-transform 0.5s; /* animáció a hover és az alap érték között 1.05 és 1.15  közt */
+   transform: scale(1.15); /* nagyítási arány megnövelése*/
+   transition:transform 0.5s, opacity 0.5s; /* animáció a hover és az alap érték között 1.05 és 1.15  közt */
    opacity:0.7;
    
 }
 .meal-photo img:hover{
    opacity:1; /*átlátszóság*/
-   -webkit-transform:scale(1.05);
-           transform:scale(1.05);
+   transform:scale(1.05);
 }
 
 
@@ -350,7 +352,9 @@ header{
    background-color:#f4f4f4;
 }
 
-
+.btn-app img{
+ height:50px;  
+}
 
 
 
@@ -532,8 +536,7 @@ textarea{
 
 input[type=checkbox]{
    margin:10px 5px 10px 0;
-   -webkit-transform: scale(1.5);
-           transform: scale(1.5);
+   transform: scale(1.5);
 }
 
 *:focus{
@@ -794,27 +797,7 @@ footer p{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /*--------------- MEDIA QUERIES ---------------*/
-
-
-
-
-
-
-
-
 
 
 
